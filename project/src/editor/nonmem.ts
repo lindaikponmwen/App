@@ -1,0 +1,211 @@
+export interface NONMEMTokens {
+  comment: string;
+  numeric: string;
+  controlRecord: string;
+  advantTrans: string;
+  recordName: string;
+  string: string;
+  keyword: string;
+  parameter: string;
+  reserved: string;
+  operator: string;
+  delimiter: string;
+}
+
+export const nonmemTokens: NONMEMTokens = {
+  comment: 'nm7-comment',
+  numeric: 'nm7-numeric', 
+  controlRecord: 'nm7-control-record',
+  advantTrans: 'nm7-advant-trans',
+  recordName: 'nm7-record-name',
+  string: 'nm7-string',
+  keyword: 'nm7-keyword',
+  parameter: 'nm7-parameter',
+  reserved: 'nm7-reserved',
+  operator: 'nm7-operator',
+  delimiter: 'nm7-delimiter'
+};
+
+export const nonmemLanguageDefinition = {
+  // Set defaultToken to empty string to avoid fallback highlighting
+  defaultToken: '',
+  
+  // Keywords for NONMEM
+  keywords: [
+    'Q', 'CL', 'V', 'KA', 'IPRED', 'IWRES', 'NORESCALE', 'RESCALE', 'NPOPETAS', 'POPETAS',
+    'ONLYREAD', 'NCOMPARTMENTS', 'NCOMP', 'COMP', 'NCM', 'NCOMPS', 'NPARAMS', 'NEQUILIBRIUM',
+    'NPARAMETERS', 'COMPARTMENT', 'LINK', 'TO', 'AND', 'MARGINALS', 'ETAS', 'MSFO', 'RECOMPUTE',
+    'CONDITIONAL', 'UNCONDITIONAL', 'OMITTED', 'DIAGONAL', 'DIAG', 'BLOCK', 'FIXED', 'FIX',
+    'VARIANCE', 'STANDARD', 'SD', 'COVARIANCE', 'CORRELATION', 'CORRELATON', 'CORR', 'ALLOFFFIX',
+    'FIRSTFIXED', 'PRINCIPAL', 'UNIT', 'ORD0', 'ORDZERO', 'NOORD0', 'NOORDZERO', 'ABS0', 'ABZERO',
+    'ABSZERO', 'AB0', 'NOABS0', 'NOAB0', 'NOABZERO', 'NOABSZERO', 'FIRSTONLY', 'FIRSTRECONLY',
+    'FIRSTRECORDONLY', 'OBSONLY', 'FROM', 'VS', 'NORMAL', 'UNIFORM', 'NEW', 'NONP', 'NONPARAMETRIC',
+    'ONLYSIM', 'ONLYSIMULATION', 'REQUESTFIRST', 'REQUESTSECOND', 'PREDICTION', 'NOPREDICTION',
+    'TRUE', 'SUBPROBLEMS', 'SUBPROPS', 'NSUBPROBLEMS', 'NSUBPROBS', 'NSUB', 'SUBROUTINES', 'TOL',
+    'SCOPE', 'ITERATIONS', 'PRINT', 'NOPRINT', 'NITERATIONS', 'BY', 'FILE', 'NOHEADER', 'ONEHEADER',
+    'NOFORWARD', 'FORWARD', 'APPEND', 'NOAPPEND', 'NUMBERPOINTS', 'NUMBERPTS', 'NUMPOINTS', 'NUMPTS',
+    'ABORT', 'NOABORT', 'NOABORTFIRST', 'NRD', 'NONE', 'RESET', 'NORESET', 'WARNINGMAXIMUM',
+    'WARNMAXIMUM', 'WARN', 'WMAX', 'DATAMAXIMUM', 'DMAX', 'DATA', 'DMAXIMUM', 'ERRORMAXIMUM',
+    'ERRMAXIMUM', 'EMAX', 'COMRES', 'COMSAV', 'DERIV2', 'DES', 'ONLYTHETA', 'ONLY-THETA',
+    'ONLYETA', 'ONLY-ETA', 'ONLYSIGMA', 'ONLY-SIGMA', 'LEVEL', 'DEGREES', 'DOUBLESIDED',
+    'LEFTSIDED', 'RIGHTSIDED', 'DOUBLESIDE', 'LEFTSIDE', 'RIGHTSIDE', 'DOUBLE-SIDED', 'LEFT-SIDED',
+    'RIGHT-SIDED', 'DOUBLE-SIDE', 'LEFT-SIDE', 'RIGHT-SIDE', 'SPECIAL', 'MATRIX', 'COMPRESS',
+    'CONFIDENCE', 'NOCONFIDENCE', 'SLOW', 'NOSLOW', 'COND', 'IGNORE', 'NULL', 'RECORDS', 'NRECS',
+    'RECS', 'NRECORDS', 'LRECL', 'ACCEPT', 'NOWIDE', 'WIDE', 'REWIND', 'NOREWIND', 'CHECKOUT',
+    'CHECKDATA', 'NOOPEN', 'LAST20', 'TRANSLATE', 'METHOD', 'METH', 'INTER', 'INTERACTION',
+    'NOINTER', 'NOINTERACTION', 'LAPLACIAN', 'LAPLACE', 'NOLAPLACIAN', 'NOLAPLACE', 'LIKELIHOOD',
+    '-2LOGLIKELIHOOD', '-2LL', '-2LLIKELIHOOD', 'FO', 'NOFO', 'CENTERING', 'CENTER', 'NOCENTERING',
+    'STIELTJES', 'GRID', 'NUMERICAL', 'NONUMERICAL', 'ZERO', 'POSTHOC', 'NOPOSTHOC', 'SIGDIGITS',
+    'SIGDIG', 'NSIG', 'SIG', 'NSIGDIGITS', 'NSIGDIGS', 'NSIGDIG', 'MAXEVALS', 'MAXEVAL', 'NOREPEAT',
+    'REPEAT', 'NOREPEAT1', 'REPEAT1', 'NOREPEAT2', 'REPEAT2', 'NOETABARCHECK', 'ETABARCHECK',
+    'NSPOP', 'F_FLAG', 'PHI', 'NOSORT', 'SORT', 'THETABOUNDTEST', 'NOTHETABOUNDTEST',
+    'OMEGABOUNDTEST', 'NOOMEGABOUNDTEST', 'SIGMABOUNDTEST', 'NOSIGMABOUNDTEST', 'NOPRIOR',
+    'SIGL', 'NITER', 'ISAMPLE', 'ISAMPLE_M1', 'ISAMPLE_M2', 'ISAMPLE_M3', 'IACCEPT', 'DF',
+    'EONLY', 'NBURN', 'PSAMPLE_M1', 'PSAMPLE_M2', 'PSAMPLE_M3', 'PACCEPT', 'OSAMPLE_M1',
+    'OSAMPLE_M2', 'OSAMPLE_M3', 'OACCEPT', 'MUM', 'GRD', 'CTYPE', 'NTERVAL', 'CITER', 'CALPHA',
+    'FORMAT', 'NOTITLE', 'NOLABEL', 'ITS', 'IMPLICIT', 'IMPMAP', 'SAEM', 'BAYES', 'CHAIN',
+    'TNPRI', 'IFND', 'CTLO', 'CTLW', 'DCTLO', 'DCTLW', 'DDCTLO', 'DDCTLW', 'CTUP', 'DCTUP',
+    'DDCTUP', 'NPRED', 'NRES', 'RES', 'PREDI', 'RESI', 'WRESI', 'CPRED', 'CRES', 'CWRES',
+    'CPREDI', 'CRESI', 'CWRESI', 'EPRED', 'IRES', 'ERES', 'EWRES', 'NPDE', 'ECWRES', 'ESAMPLE',
+    'DEN_', 'CDEN_'
+  ],
+
+  // String constants
+  stringConstants: [
+    'INITIALOFF', 'NOOFF', 'NODOSE', 'EQUILIBRIUM', 'EXCLUDE', 'DEFOBSERVATION', 'DEFDOSE',
+    'DEFDOS', 'CENT', 'CENTRAL', 'DEFOBS', 'DEPOT', 'SAME', 'INITIAL', 'FINAL', 'PRIOR',
+    'NO', 'NOCOMMON', 'FULL', 'COMPACT', 'CONDITIONAL', 'HYBRID', 'SS1', 'SS2', 'SS3',
+    'SS4', 'SS5', 'SS6', 'SS7', 'SS8', 'SS9', 'SS10', 'SS11', 'SS12'
+  ],
+
+  // FORTRAN keywords and functions
+  fortranKeywords: [
+    'CALL', 'CALLFL', 'DO', 'ELSE', 'ELSEIF', 'ENDIF', 'EQ', 'EXIT', 'GE', 'GT', 'IF',
+    'LE', 'LT', 'NE', 'OR', 'AND', 'TRUE', 'FALSE', 'MODE', 'PASS', 'RANDOM', 'RETURN',
+    'SIMEPS', 'SIMETA', 'SQRT', 'SUPP', 'THEN', 'WHILE', 'ABS', 'ACOS', 'AIMAG', 'AINT',
+    'ALOG', 'ALOG10', 'AMAX0', 'AMAX1', 'AMIN0', 'AMIN1', 'AMOD', 'ANINT', 'ASIN', 'ATAN',
+    'ATAN2', 'BACKSPACE', 'BLOCK', 'CABS', 'CCOS', 'CEXP', 'CHAR', 'CHARACTER', 'CLOG',
+    'CLOSE', 'CMPLX', 'COMMON', 'COMPLEX', 'CONJG', 'CONTINUE', 'COS', 'COSH', 'CSIN',
+    'CSQRT', 'DABS', 'DACOS', 'DASIN', 'DATAN', 'DATAN2', 'DBLE', 'DCOS', 'DCOSH', 'DDIM',
+    'DEXP', 'DIM', 'DIMENSION', 'DINT', 'DLOG', 'DMAX1', 'DMIN1', 'DMOD', 'DNINT', 'DOUBLE',
+    'DPROD', 'DSIGN', 'DSIN', 'DSINH', 'DSQRT', 'DTAN', 'DTANH', 'END', 'ENDFILE', 'ENTRY',
+    'EQUIVALENCE', 'ERR', 'EXP', 'EXTERNAL', 'FILE', 'FLOAT', 'FORMAT', 'FUNCTION', 'GOTO',
+    'IABS', 'ICHAR', 'IDIM', 'IDINT', 'IDNINT', 'IFIX', 'INDEX', 'INQUIRE', 'INTEGER',
+    'INTRINSIC', 'IOSTAT', 'ISIGN', 'LEN', 'LGE', 'LGT', 'LLE', 'LLT', 'LOG', 'LOG10',
+    'LOGICAL', 'MAX', 'MAX0', 'MAX1', 'MIN', 'MIN0', 'MIN1', 'MOD', 'NINT', 'NOT', 'OPEN',
+    'PARAMETER', 'PAUSE', 'PRECISION', 'PROGRAM', 'READ', 'REAL', 'REWIND', 'SAVE', 'SIGN',
+    'SIN', 'SINH', 'SNGL', 'STATUS', 'STOP', 'SUBROUTINE', 'TAN', 'TANH', 'UNIT', 'WRITE'
+  ],
+
+  // Parameters and variables
+  parameters: [
+    'ALPHA', 'AOB', 'BETA', 'D1', 'D2', 'D3', 'D4', 'F1', 'F2', 'F3', 'F4', 'GAMMA',
+    'K', 'K12', 'K13', 'K21', 'K23', 'K24', 'K31', 'K32', 'K42', 'KM', 'Km0', 'Kmn',
+    'Q2', 'Q3', 'Q4', 'R1', 'R2', 'R3', 'R4', 'S0', 'S1', 'S2', 'S3', 'S4', 'SC',
+    'TSCALE', 'VM', 'VSS', 'XSCALE', 'ADDL', 'AMT', 'CMT', 'COM', 'CONT', 'DAT1', 'DAT2',
+    'DAT3', 'DATE', 'DOSE', 'DROP', 'DV', 'ERR', 'EVID', 'F', 'ICALL', 'ID', 'II', 'INIT',
+    'L1', 'L2', 'LAST', 'MDV', 'MRG_', 'NEXT', 'P', 'PCMT', 'PRED', 'RATE', 'RAW_', 'RPT_',
+    'SKIP', 'SS', 'TIME', 'WRES', 'Y', 'A_0', 'A_0FLG', 'COMSAV', 'DOSREC', 'DOSTIM',
+    'ETEXT', 'GETETA', 'I_REC', 'IERC', 'IERE', 'IERPRD', 'INDR1', 'INDR2', 'IPROB',
+    'IREP', 'ISFINL', 'MFIRST', 'MIXEST', 'MIXNUM', 'MIXP', 'MNEXT', 'MNOW', 'MPAST',
+    'MSEC', 'MTDIFF', 'MTIME', 'NDREC', 'NETEXT', 'NEWIND', 'NEWL2', 'NINDR', 'NIREC',
+    'NPROB', 'NREP', 'NWIND', 'OBJECT', 'OMEGAF', 'PRDFL', 'RPTI', 'RPTO', 'RPTON',
+    'S1IT', 'S1NIT', 'S1NUM', 'S2IT', 'S2NIT', 'S2NUM', 'SEOMEG', 'SESIGM', 'SETHET',
+    'SIGMAF', 'SKIP_', 'TEMPLT', 'THETAF', 'TSTATE', 'YLO', 'YUP', 'ADVAN', 'AES',
+    'CCONTR', 'CCRIT', 'CONTR', 'ERROR', 'INFN', 'INLETA', 'MIX', 'MODEL', 'OTHER',
+    'PK', 'SPTWO', 'TRANS', 'USMETA'
+  ],
+
+  // Operators
+  operators: [
+    '=', '+', '-', '*', '/', '**', '.EQ.', '.NE.', '.LT.', '.LE.', '.GT.', '.GE.',
+    '.AND.', '.OR.', '.NOT.', '.TRUE.', '.FALSE.'
+  ],
+
+  // Symbols
+  symbols: /[=><!~?:&|+\-*\/\^%]+/,
+
+  // Tokenizer rules
+  tokenizer: {
+    root: [
+      // Comments
+      [/;.*$/, nonmemTokens.comment],
+
+      // Control records ($PROBLEM, $DATA, etc.)
+      [/\$[A-Za-z]+/, nonmemTokens.controlRecord],
+
+      // ADVAN/TRANS routines
+      [/\b(ADVAN\d+|TRANS\d+)\b/, nonmemTokens.advantTrans],
+
+      // Reserved values with parentheses (THETA, ETA, EPS, A, DADT, etc.)
+      [/\b(A\(\d+\)|ALAG\d+|F\d+|THETA\(\d+\)|ETA\(\d+\)|DADT\(\d+\)|EPS\(\d+\))\b/, nonmemTokens.reserved],
+
+      // String constants
+      [/\b(INITIALOFF|NOOFF|NODOSE|EQUILIBRIUM|EXCLUDE|DEFOBSERVATION|DEFDOSE|DEFDOS|CENT|CENTRAL|DEFOBS|DEPOT|SAME|INITIAL|FINAL|PRIOR|NO|NOCOMMON|FULL|COMPACT|CONDITIONAL|HYBRID|SS1|SS2|SS3|SS4|SS5|SS6|SS7|SS8|SS9|SS10|SS11|SS12)\b/, nonmemTokens.string],
+
+      // NONMEM keywords and record names
+      [/\b(Q|CL|CL\d*|V\d*|KA\d*|V4IPRED|IWRES|NORESCALE|RESCALE|NPOPETAS|POPETAS|ONLYREAD|NCOMPARTMENTS|NCOMP|COMP|NCM|NCOMPS|NPARAMS|NEQUILIBRIUM|NPARAMETERS|COMPARTMENT|LINK|TO|AND|MARGINALS|ETAS|MSFO|RECOMPUTE|CONDITIONAL|UNCONDITIONAL|OMITTED|DIAGONAL|DIAG|BLOCK|FIXED|FIX|VARIANCE|STANDARD|SD|COVARIANCE|CORRELATION|CORRELATON|CORR|ALLOFFFIX|FIRSTFIXED|PRINCIPAL|UNIT|ORD0|ORDZERO|NOORD0|NOORDZERO|ABS0|ABZERO|ABSZERO|AB0|NOABS0|NOAB0|NOABZERO|NOABSZERO|FIRSTONLY|FIRSTRECONLY|FIRSTRECORDONLY|OBSONLY|FROM|VS|NORMAL|UNIFORM|NEW|NONP|NONPARAMETRIC|ONLYSIM|ONLYSIMULATION|REQUESTFIRST|REQUESTSECOND|PREDICTION|NOPREDICTION|TRUE|SUBPROBLEMS|SUBPROPS|NSUBPROBLEMS|NSUBPROBS|NSUB|SUBROUTINES|TOL|SCOPE|ITERATIONS|PRINT|NOPRINT|NITERATIONS|BY|FILE|NOHEADER|ONEHEADER|NOFORWARD|FORWARD|APPEND|NOAPPEND|NUMBERPOINTS|NUMBERPTS|NUMPOINTS|NUMPTS|ABORT|NOABORT|NOABORTFIRST|NRD|NONE|RESET|NORESET|WARNINGMAXIMUM|WARNMAXIMUM|WARN|WMAX|DATAMAXIMUM|DMAX|DATA|DMAXIMUM|ERRORMAXIMUM|ERRMAXIMUM|EMAX|COMRES|COMSAV|DERIV2|DES|ONLYTHETA|ONLY-THETA|ONLYETA|ONLY-ETA|ONLYSIGMA|ONLY-SIGMA|LEVEL|DEGREES|DOUBLESIDED|LEFTSIDED|RIGHTSIDED|DOUBLESIDE|LEFTSIDE|RIGHTSIDE|DOUBLE-SIDED|LEFT-SIDED|RIGHT-SIDED|DOUBLE-SIDE|LEFT-SIDE|RIGHT-SIDE|SPECIAL|MATRIX|COMPRESS|CONFIDENCE|NOCONFIDENCE|SLOW|NOSLOW|COND|IGNORE|NULL|RECORDS|NRECS|RECS|NRECORDS|LRECL|ACCEPT|NOWIDE|WIDE|REWIND|NOREWIND|CHECKOUT|CHECKDATA|NOOPEN|LAST20|TRANSLATE|METHOD|METH|INTER|INTERACTION|NOINTER|NOINTERACTION|LAPLACIAN|LAPLACE|NOLAPLACIAN|NOLAPLACE|LIKELIHOOD|-2LOGLIKELIHOOD|-2LL|-2LLIKELIHOOD|FO|NOFO|CENTERING|CENTER|NOCENTERING|STIELTJES|GRID|NUMERICAL|NONUMERICAL|ZERO|POSTHOC|NOPOSTHOC|SIGDIGITS|SIGDIG|NSIG|SIG|NSIGDIGITS|NSIGDIGS|NSIGDIG|MAXEVALS|MAXEVAL|NOREPEAT|REPEAT|NOREPEAT1|REPEAT1|NOREPEAT2|REPEAT2|NOETABARCHECK|ETABARCHECK|NSPOP|F_FLAG|PHI|NOSORT|SORT|THETABOUNDTEST|NOTHETABOUNDTEST|OMEGABOUNDTEST|NOOMEGABOUNDTEST|SIGMABOUNDTEST|NOSIGMABOUNDTEST|NOPRIOR|SIGL|NITER|ISAMPLE|ISAMPLE_M1|ISAMPLE_M2|ISAMPLE_M3|IACCEPT|DF|EONLY|NBURN|PSAMPLE_M1|PSAMPLE_M2|PSAMPLE_M3|PACCEPT|OSAMPLE_M1|OSAMPLE_M2|OSAMPLE_M3|OACCEPT|MUM|GRD|CTYPE|NTERVAL|CITER|CALPHA|FORMAT|NOTITLE|NOLABEL|ITS|IMPLICIT|IMPMAP|SAEM|BAYES|CHAIN|TNPRI|IFND|CTLO|CTLW|DCTLO|DCTLW|DDCTLO|DDCTLW|CTUP|DCTUP|DDCTUP|NPRED|NRES|RES|PREDI|RESI|WRESI|CPRED|CRES|CWRES|CPREDI|CRESI|CWRESI|EPRED|IRES|ERES|EWRES|NPDE|ECWRES|ESAMPLE|DEN_|CDEN_)\b/, nonmemTokens.recordName],
+
+      // FORTRAN keywords and functions
+      [/\b(CALL|CALLFL|DO|ELSE|ELSEIF|ENDIF|\.EQ\.|EXIT|\.GE\.|\.GT\.|IF|\.LE\.|\.LT\.|\.NE\.|MODE|\.OR\.|\.AND\.|\.TRUE\.|\.FALSE\.|PASS|RANDOM|RETURN|SIMEPS|SIMETA|SQRT|SUPP|THEN|WHILE|ABS|ACOS|AIMAG|AINT|ALOG|ALOG10|AMAX0|AMAX1|AMIN0|AMIN1|AMOD|AND|ANINT|ASIN|ATAN|ATAN2|BACKSPACE|BLOCK|CABS|CCOS|CEXP|CHAR|CHARACTER|CLOG|CLOSE|CMPLX|COMMON|COMPLEX|CONJG|CONTINUE|COS|COSH|CSIN|CSQRT|DABS|DACOS|DASIN|DATAN|DATAN2|DBLE|DCOS|DCOSH|DDIM|DEXP|DIM|DIMENSION|DINT|DLOG|DMAX1|DMIN1|DMOD|DNINT|DOUBLE|DPROD|DSIGN|DSIN|DSINH|DSQRT|DTAN|DTANH|END|ENDFILE|ENTRY|EQUIVALENCE|ERR|EXP|EXTERNAL|FILE|FLOAT|FORMAT|FUNCTION|GOTO|IABS|ICHAR|IDIM|IDINT|IDNINT|IFIX|INDEX|INQUIRE|INTEGER|INTRINSIC|IOSTAT|ISIGN|LEN|LGE|LGT|LLE|LLT|LOG|LOG10|LOGICAL|MAX|MAX0|MAX1|MIN|MIN0|MIN1|MOD|NINT|NOT|OPEN|PARAMETER|PAUSE|PRECISION|PROGRAM|read|REAL|REWIND|SAVE|SIGN|SIN|SINH|SNGL|STATUS|STOP|SUBROUTINE|TAN|TANH|UNIT|WRITE)\b/, nonmemTokens.parameter],
+
+      // Parameters and variables
+      [/\b(ALPHA|AOB|BETA|D1|D2|D3|D4|F1|F2|F3|F4|GAMMA|K|K12|K13|K21|K23|K24|K31|K32|K42|KM|Km0|Kmn|Q2|Q3|Q4|R1|R2|R3|R4|S0|S1|S2|S3|S4|SC|TSCALE|VM|VSS|XSCALE|ADDL|AMT|CMT|COM|CONT|DAT1|DAT2|DAT3|DATE|DOSE|DROP|DV|ERR|EVID|F|ICALL|ID|II|INIT|L1|L2|LAST|MDV|MRG_|NEXT|P|PCMT|PRED|RATE|RAW_|RPT_|SKIP|SS|TIME|WRES|Y|A_0|A_0FLG|COMSAV|DOSREC|DOSTIM|ETEXT|GETETA|I_REC|IERC|IERE|IERPRD|INDR1|INDR2|IPROB|IREP|ISFINL|MFIRST|MIXEST|MIXNUM|MIXP|MNEXT|MNOW|MPAST|MSEC|MTDIFF|MTIME|NDREC|NETEXT|NEWIND|NEWL2|NINDR|NIREC|NPROB|NREP|NWIND|OBJECT|OMEGAF|PRDFL|RPTI|RPTO|RPTON|S1IT|S1NIT|S1NUM|S2IT|S2NIT|S2NUM|SEOMEG|SESIGM|SETHET|SIGMAF|SKIP_|TEMPLT|THETAF|TSTATE|YLO|YUP|ADVAN|AES|CCONTR|CCRIT|CONTR|ERROR|INFN|INLETA|MIX|MODEL|OTHER|PK|SPTWO|TRANS|USMETA)\b/, nonmemTokens.keyword],
+
+      // Numeric constants
+      [/\b\d+(\.\d+)?([eE][+-]?\d+)?\b/, nonmemTokens.numeric],
+
+      // Operators
+      [/[=+\-*/]/, nonmemTokens.operator],
+      [/\*\*/, nonmemTokens.operator],
+
+      // Delimiters
+      [/[;,.]/, nonmemTokens.delimiter],
+      [/[()[\]]/, nonmemTokens.delimiter],
+
+      // Whitespace
+      [/[ \t\r\n]+/, 'white'],
+
+      // Identifiers (catch-all for other words)
+      [/[a-zA-Z_]\w*/, '']
+    ]
+  }
+};
+
+export const nonmemTheme = {
+  base: 'vs-dark' as const,
+  inherit: true,
+  rules: [
+    { token: nonmemTokens.comment, foreground: '6a9955', fontStyle: 'italic' },
+    { token: nonmemTokens.numeric, foreground: 'b5cea8' },
+    { token: nonmemTokens.controlRecord, foreground: '569cd6', fontStyle: 'bold' },
+    { token: nonmemTokens.advantTrans, foreground: '4ec9b0' },
+    { token: nonmemTokens.recordName, foreground: '9cdcfe' },
+    { token: nonmemTokens.string, foreground: 'ce9178' },
+    { token: nonmemTokens.keyword, foreground: 'c586c0' },
+    { token: nonmemTokens.parameter, foreground: 'dcdcaa' },
+    { token: nonmemTokens.reserved, foreground: 'ff6b6b', fontStyle: 'bold' },
+    { token: nonmemTokens.operator, foreground: 'd4d4d4' },
+    { token: nonmemTokens.delimiter, foreground: 'd4d4d4' }
+  ],
+  colors: {}
+};
+
+export const nonmemLightTheme = {
+  base: 'vs' as const,
+  inherit: true,
+  rules: [
+    { token: nonmemTokens.comment, foreground: '008000', fontStyle: 'italic' },
+    { token: nonmemTokens.numeric, foreground: '098658' },
+    { token: nonmemTokens.controlRecord, foreground: '0000ff', fontStyle: 'bold' },
+    { token: nonmemTokens.advantTrans, foreground: '267f99' },
+    { token: nonmemTokens.recordName, foreground: '001080' },
+    { token: nonmemTokens.string, foreground: 'a31515' },
+    { token: nonmemTokens.keyword, foreground: 'af00db' },
+    { token: nonmemTokens.parameter, foreground: '795e26' },
+    { token: nonmemTokens.reserved, foreground: 'ff0000', fontStyle: 'bold' },
+    { token: nonmemTokens.operator, foreground: '000000' },
+    { token: nonmemTokens.delimiter, foreground: '000000' }
+  ],
+  colors: {}
+};

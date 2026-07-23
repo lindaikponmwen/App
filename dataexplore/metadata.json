@@ -1,0 +1,5 @@
+{
+  "name": "DataExplorer_Final1_s3_v1",
+  "description": "A sophisticated data exploration and visualization platform that allows users to generate charts, view datasets, and inspect R-style analytical code.",
+  "requestFramePermissions": []
+}

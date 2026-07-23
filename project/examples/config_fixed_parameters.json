@@ -1,0 +1,55 @@
+{
+  "model": {
+    "model_type": "one_compartment_iv",
+    "custom_ode": null
+  },
+  "data": {
+    "file": "examples/one_compartment_sample.csv",
+    "id_column": "ID",
+    "time_column": "TIME",
+    "dv_column": "DV",
+    "amt_column": "AMT",
+    "evid_column": "EVID",
+    "covariates": []
+  },
+  "parameters": {
+    "theta": [5.0, 50.0],
+    "theta_names": {
+      "CL": "Clearance (L/h)",
+      "V": "Volume of Distribution (L)"
+    },
+    "omega": [
+      [0.3, 0.0],
+      [0.0, 0.5]
+    ],
+    "omega_names": {
+      "CL": "Inter-individual variability on CL",
+      "V": "Inter-individual variability on V"
+    },
+    "sigma": 1.0,
+    "error_model": "additive",
+    "sigma_proportional": null,
+    "constraints": {
+      "theta_lower": [0.1, 1.0],
+      "theta_upper": [100.0, 500.0],
+      "omega_lower": null,
+      "omega_upper": null,
+      "theta_fixed": [false, true],
+      "omega_fixed": [false, false],
+      "sigma_fixed": false
+    }
+  },
+  "estimation": {
+    "method": "saem",
+    "n_burn_in": 200,
+    "n_iter": 300,
+    "n_chains": 1,
+    "seed": 12345
+  },
+  "output": {
+    "directory": "output",
+    "save_individual_parameters": true,
+    "save_predictions": true,
+    "generate_plots": false
+  }
+}

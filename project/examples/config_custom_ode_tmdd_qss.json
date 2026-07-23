@@ -1,0 +1,88 @@
+{
+  "model": {
+    "model_type": "custom_ode",
+    "custom_ode": {
+      "n_compartments": 3,
+      "parameters": ["CL", "V1", "V2", "Q", "KA", "VMAX", "KM"],
+      "equations": [
+        "-KA * A[0]",
+        "KA * A[0] - (CL/V1) * A[1] - (Q/V1) * A[1] + (Q/V2) * A[2] - (VMAX * (A[1]/V1)) / (KM + (A[1]/V1))",
+        "(Q/V1) * A[1] - (Q/V2) * A[2]"
+      ],
+      "observation_compartment": 2,
+      "observation_scaling": "V2 * 45"
+    }
+  },
+  "data": {
+    "file": "examples/two_compartment_sample.csv",
+    "id_column": "ID",
+    "time_column": "TIME",
+    "dv_column": "DV",
+    "amt_column": "AMT",
+    "evid_column": "EVID",
+    "covariates": []
+  },
+  "parameters": {
+    "theta": {
+      "CL": 3.0,
+      "V1": 70.0,
+      "V2": 0.8,
+      "Q": 2.5,
+      "KA": 1.0,
+      "VMAX": 15.0,
+      "KM": 2.0
+    },
+    "theta_names": {
+      "CL": "Linear clearance (L/h)",
+      "V1": "Central volume (L)",
+      "V2": "Peripheral volume (L)",
+      "Q": "Inter-compartmental clearance (L/h)",
+      "KA": "Absorption rate constant (1/h)",
+      "VMAX": "Maximum elimination rate (mg/h)",
+      "KM": "Michaelis constant (mg/L)"
+    },
+    "omega": {
+      "CL": 0.12,
+      "V1": 0.12,
+      "V2": 0.12,
+      "Q": 0.12,
+      "KA": 0.12,
+      "VMAX": 0.18,
+      "KM": 0.18
+    },
+    "omega_names": {
+      "CL": "Inter-individual variability on CL",
+      "V1": "Inter-individual variability on V1",
+      "V2": "Inter-individual variability on V2",
+      "Q": "Inter-individual variability on Q",
+      "KA": "Inter-individual variability on KA",
+      "VMAX": "Inter-individual variability on VMAX",
+      "KM": "Inter-individual variability on KM"
+    },
+    "sigma": 1.2,
+    "error_model": "proportional",
+    "sigma_proportional": 0.25,
+    "constraints": {
+      "theta_lower": [0.1, 10.0, 0.1, 0.1, 0.01, 0.1, 0.1],
+      "theta_upper": [50.0, 500.0, 50.0, 50.0, 10.0, 100.0, 50.0],
+      "omega_lower": null,
+      "omega_upper": null,
+      "theta_fixed": null,
+      "omega_fixed": null,
+      "sigma_fixed": null
+    }
+  },
+  "estimation": {
+    "method": "SAEM",
+    "n_burn_in": 150,
+    "n_iter": 400,
+    "n_chains": 3,
+    "seed": 98765
+  },
+  "output": {
+    "directory": "output_custom_ode_tmdd_qss",
+    "save_individual_parameters": true,
+    "save_predictions": true,
+    "generate_plots": false
+  }
+}

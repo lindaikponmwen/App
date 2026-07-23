@@ -1,0 +1,5 @@
+{
+  "name": "DrLevy AI Team Subscriptions",
+  "description": "A comprehensive team-based subscription management system with Stripe integration, featuring seat-based billing, team management, and automated webhooks.",
+  "requestFramePermissions": []
+}

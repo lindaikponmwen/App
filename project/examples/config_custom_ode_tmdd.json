@@ -1,0 +1,101 @@
+{
+  "model": {
+    "model_type": "custom_ode",
+    "custom_ode": {
+      "n_compartments": 4,
+      "parameters": ["CL", "V1", "V2", "Q", "KA", "KON", "KOFF", "KINT", "KDEG", "KSYN"],
+      "equations": [
+        "-KA * A[0]",
+        "KA * A[0] - (CL/V1) * A[1] - (Q/V1) * A[1] + (Q/V2) * A[2] - KON * (A[1]/V1) * A[3] + KOFF * A[3] * V1",
+        "(Q/V1) * A[1] - (Q/V2) * A[2]",
+        "KSYN - KDEG * A[3] - KON * (A[1]/V1) * A[3] + KOFF * A[3] - KINT * A[3]"
+      ],
+      "observation_compartment": 1,
+      "observation_scaling": "V1/1000"
+    }
+  },
+  "data": {
+    "file": "examples/two_compartment_sample.csv",
+    "id_column": "ID",
+    "time_column": "TIME",
+    "dv_column": "DV",
+    "amt_column": "AMT",
+    "evid_column": "EVID",
+    "covariates": []
+  },
+  "parameters": {
+    "theta": {
+      "CL": 0.5,
+      "V1": 5.0,
+      "V2": 3.0,
+      "Q": 0.3,
+      "KA": 0.8,
+      "KON": 0.01,
+      "KOFF": 0.001,
+      "KINT": 0.01,
+      "KDEG": 0.05,
+      "KSYN": 5.0
+    },
+    "theta_names": {
+      "CL": "Linear clearance (L/h)",
+      "V1": "Central volume (L)",
+      "V2": "Peripheral volume (L)",
+      "Q": "Inter-compartmental clearance (L/h)",
+      "KA": "Absorption rate constant (1/h)",
+      "KON": "Target binding on-rate (1/nM/h)",
+      "KOFF": "Target binding off-rate (1/h)",
+      "KINT": "Complex internalization rate (1/h)",
+      "KDEG": "Target degradation rate (1/h)",
+      "KSYN": "Target synthesis rate (nM/h)"
+    },
+    "omega": {
+      "CL": 0.15,
+      "V1": 0.15,
+      "V2": 0.15,
+      "Q": 0.15,
+      "KA": 0.15,
+      "KON": 0.2,
+      "KOFF": 0.2,
+      "KINT": 0.2,
+      "KDEG": 0.2,
+      "KSYN": 0.2
+    },
+    "omega_names": {
+      "CL": "Inter-individual variability on CL",
+      "V1": "Inter-individual variability on V1",
+      "V2": "Inter-individual variability on V2",
+      "Q": "Inter-individual variability on Q",
+      "KA": "Inter-individual variability on KA",
+      "KON": "Inter-individual variability on KON",
+      "KOFF": "Inter-individual variability on KOFF",
+      "KINT": "Inter-individual variability on KINT",
+      "KDEG": "Inter-individual variability on KDEG",
+      "KSYN": "Inter-individual variability on KSYN"
+    },
+    "sigma": 0.5,
+    "error_model": "combined",
+    "sigma_proportional": 0.2,
+    "constraints": {
+      "theta_lower": [0.01, 0.1, 0.1, 0.01, 0.01, 0.0001, 0.00001, 0.001, 0.001, 0.1],
+      "theta_upper": [50.0, 100.0, 100.0, 50.0, 10.0, 1.0, 0.1, 1.0, 1.0, 100.0],
+      "omega_lower": null,
+      "omega_upper": null,
+      "theta_fixed": null,
+      "omega_fixed": null,
+      "sigma_fixed": null
+    }
+  },
+  "estimation": {
+    "method": "SAEM",
+    "n_burn_in": 200,
+    "n_iter": 500,
+    "n_chains": 4,
+    "seed": 54321
+  },
+  "output": {
+    "directory": "output_custom_ode_tmdd",
+    "save_individual_parameters": true,
+    "save_predictions": true,
+    "generate_plots": false
+  }
+}

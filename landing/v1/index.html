@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DrLevy AI | Pharmacometrics Platform</title>
+    <meta name="description" content="A complete end-to-end platform that transforms how your team works. From initial analysis planning to model development to regulatory submission, DrLevy.AI streamlines every phase of your workflow with intelligent automation, integrated project management, and unified tools for data preparation through advanced modeling. Cut analysis cycles significantly, enhance team collaboration, and handle analyses in one powerful environment.">
+    <link rel="icon" href="https://pharmacometrics.ai/assets.favicon/android-chrome-192x192.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                dark: '#3b0764', // Deep purple (legacy)
+                primary: '#0078D4', // New Primary Blue
+                secondary: '#2b88d8', // Hover Blue
+                text: '#1a1a1a', // Main text
+              }
+            },
+            borderRadius: {
+              DEFAULT: '0px',
+              'none': '0px',
+              'sm': '0px',
+              'md': '0px',
+              'lg': '0px',
+              'xl': '0px',
+              '2xl': '0px',
+              'full': '0px',
+            },
+            fontFamily: {
+              sans: ['"Segoe UI"', 'system-ui', 'sans-serif'],
+            },
+            animation: {
+              blob: "blob 10s infinite",
+              "blob-slow": "blob 15s infinite",
+            },
+            keyframes: {
+              blob: {
+                "0%": {
+                  transform: "translate(0px, 0px) scale(1)",
+                },
+                "33%": {
+                  transform: "translate(30px, -50px) scale(1.1)",
+                },
+                "66%": {
+                  transform: "translate(-20px, 20px) scale(0.9)",
+                },
+                "100%": {
+                  transform: "translate(0px, 0px) scale(1)",
+                },
+              },
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Enforcing no rounded corners globally */
+      * {
+        border-radius: 0 !important;
+      }
+      body {
+        font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+        background-color: #ffffff;
+      }
+      .animation-delay-2000 {
+        animation-delay: 2s;
+      }
+      .animation-delay-4000 {
+        animation-delay: 4s;
+      }
+      .glass-diagonal {
+        background: linear-gradient(105deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 40%, rgba(255,255,255,0.4) 40.5%, rgba(255,255,255,0) 41%);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

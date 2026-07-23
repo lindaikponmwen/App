@@ -1,0 +1,89 @@
+{
+  "model": {
+    "model_type": "custom_ode",
+    "custom_ode": {
+      "n_compartments": 4,
+      "parameters": ["CL", "V1", "V2", "V3", "Q2", "Q3", "KA"],
+      "equations": [
+        "-KA * A[0]",
+        "KA * A[0] - (CL/V1) * A[1] - (Q2/V1) * A[1] + (Q2/V2) * A[2] - (Q3/V1) * A[1] + (Q3/V3) * A[3]",
+        "(Q2/V1) * A[1] - (Q2/V2) * A[2]",
+        "(Q3/V1) * A[1] - (Q3/V3) * A[3]"
+      ],
+      "observation_compartment": 1,
+      "observation_scaling": "V1/1000"
+    }
+  },
+  "data": {
+    "file": "examples/two_compartment_sample.csv",
+    "id_column": "ID",
+    "time_column": "TIME",
+    "dv_column": "DV",
+    "amt_column": "AMT",
+    "evid_column": "EVID",
+    "covariates": []
+  },
+  "parameters": {
+    "theta": {
+      "CL": 10.0,
+      "V1": 80.0,
+      "V2": 50.0,
+      "V3": 30.0,
+      "Q2": 5.0,
+      "Q3": 3.0,
+      "KA": 1.2
+    },
+    "theta_names": {
+      "CL": "Clearance (L/h)",
+      "V1": "Central volume of distribution (L)",
+      "V2": "First peripheral volume (L)",
+      "V3": "Second peripheral volume (L)",
+      "Q2": "Inter-compartmental clearance to V2 (L/h)",
+      "Q3": "Inter-compartmental clearance to V3 (L/h)",
+      "KA": "Absorption rate constant (1/h)"
+    },
+    "omega": {
+      "CL": 0.09,
+      "V1": 0.09,
+      "V2": 0.09,
+      "V3": 0.09,
+      "Q2": 0.09,
+      "Q3": 0.09,
+      "KA": 0.09
+    },
+    "omega_names": {
+      "CL": "Inter-individual variability on CL",
+      "V1": "Inter-individual variability on V1",
+      "V2": "Inter-individual variability on V2",
+      "V3": "Inter-individual variability on V3",
+      "Q2": "Inter-individual variability on Q2",
+      "Q3": "Inter-individual variability on Q3",
+      "KA": "Inter-individual variability on KA"
+    },
+    "sigma": 0.8,
+    "error_model": "combined",
+    "sigma_proportional": 0.15,
+    "constraints": {
+      "theta_lower": [0.1, 5.0, 1.0, 1.0, 0.1, 0.1, 0.01],
+      "theta_upper": [100.0, 500.0, 500.0, 500.0, 50.0, 50.0, 10.0],
+      "omega_lower": null,
+      "omega_upper": null,
+      "theta_fixed": null,
+      "omega_fixed": null,
+      "sigma_fixed": null
+    }
+  },
+  "estimation": {
+    "method": "SAEM",
+    "n_burn_in": 150,
+    "n_iter": 400,
+    "n_chains": 3,
+    "seed": 12345
+  },
+  "output": {
+    "directory": "output_custom_ode_3comp",
+    "save_individual_parameters": true,
+    "save_predictions": true,
+    "generate_plots": false
+  }
+}

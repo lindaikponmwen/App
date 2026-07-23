@@ -1,0 +1,70 @@
+{
+  "model": {
+    "model_type": "two_compartment_ode",
+    "custom_ode": "Two-compartment model using RK4 numerical integration"
+  },
+  "data": {
+    "file": "examples/two_compartment_sample.csv",
+    "id_column": "ID",
+    "time_column": "TIME",
+    "dv_column": "DV",
+    "amt_column": "AMT",
+    "evid_column": "EVID",
+    "covariates": []
+  },
+  "parameters": {
+    "theta": {
+      "CL": 8.0,
+      "V1": 60.0,
+      "V2": 40.0,
+      "Q": 4.0,
+      "KA": 1.5
+    },
+    "theta_names": {
+      "CL": "Clearance (L/h)",
+      "V1": "Central volume of distribution (L)",
+      "V2": "Peripheral volume of distribution (L)",
+      "Q": "Inter-compartmental clearance (L/h)",
+      "KA": "Absorption rate constant (1/h)"
+    },
+    "omega": {
+      "CL": 0.09,
+      "V1": 0.09,
+      "V2": 0.09,
+      "Q": 0.09,
+      "KA": 0.09
+    },
+    "omega_names": {
+      "CL": "Inter-individual variability on CL",
+      "V1": "Inter-individual variability on V1",
+      "V2": "Inter-individual variability on V2",
+      "Q": "Inter-individual variability on Q",
+      "KA": "Inter-individual variability on KA"
+    },
+    "sigma": 1.0,
+    "error_model": "additive",
+    "sigma_proportional": null,
+    "constraints": {
+      "theta_lower": [0.1, 1.0, 1.0, 0.1, 0.01],
+      "theta_upper": [100.0, 500.0, 500.0, 50.0, 10.0],
+      "omega_lower": null,
+      "omega_upper": null,
+      "theta_fixed": null,
+      "omega_fixed": null,
+      "sigma_fixed": null
+    }
+  },
+  "estimation": {
+    "method": "SAEM",
+    "n_burn_in": 100,
+    "n_iter": 300,
+    "n_chains": 3,
+    "seed": 12345
+  },
+  "output": {
+    "directory": "output_2comp_ode",
+    "save_individual_parameters": true,
+    "save_predictions": true,
+    "generate_plots": false
+  }
+}
